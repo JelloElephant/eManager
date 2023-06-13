@@ -1,19 +1,9 @@
-
 const inquirer = require('inquirer')
 const viewControl = require('./controllers/view')
 const deptControl = require('./controllers/dept')
 const empControl = require('./controllers/employee')
 const posControl = require('./controllers/pos')
 
-
-
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3001,
-    user: "root",
-    password: "jB39qf28!",
-    database: "employee_db"
-})
 
 const init = async () => {
     console.log('Welcome to your eManager!')
@@ -31,35 +21,31 @@ const init = async () => {
             "Add new Position",
             "Add new Employee",
             "Update existing Employee",
-            "Delete exsisting Employee",
-            "Delete existing Position",
-            "Delete existing Department"
         ]
     })
     .then((ans) => {
         switch (ans.action) {
-            case "View all Departments":
+            case "View all Employees":
+                viewControl.displayAll(init)
                 break
             case "View all Positions":
+                posControl.displayAllPositions(init)
                 break
-            case "View all Employees":
+            case "View all Departments":
                 break
             case "Add new Department":
+                deptControl.addNewDepartment(init)
                 break
             case "Add new Position":
+                posControl.addPosition(init)
                 break
             case "Add new Employee":
+                posControl.createEmployee(init)
                 break
             case "Update existing Employee":
+                empControl.updateEmployee(init)
                 break
-            case "Delete exsisting Employee":
-                break
-            case "Delete existing Position":
-                break
-            case "Delete existing Department":
-                break
-        }
-    })
+    }})
 }
 
 

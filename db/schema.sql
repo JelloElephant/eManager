@@ -14,22 +14,22 @@ INSERT INTO dept(position)
 VALUES ("Sales"), ("Engineering"), ("Fiance"), ("Legal");
 
 CREATE TABLE position (
-    pos_id INT AUTO_INCREMENT,
-    title VARCHAR(40),
-    salary DECIMAL(9,2),
-    dept_id INT,
+    pos_id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(40) NOT NULL,
+    salary DECIMAL(9,2) NOT NULL,
+    dept_id INT NOT NULL,
     PRIMARY KEY (pos_id)
 );
 
 INSERT INTO position(title, salary, dept_id)
-VALUES ("Software Engineer", 160000, 2), ("Lead Engineer", 180000, 2), ("Sales Associate", 100000, 2), ("Sales Leader", 120000, 2), ("Accountant", 125000, 2), ("Account Manager", 175000, 2), ("Laywer", 190000, 2), ("Legal Team Lead", 225000, 2);
+VALUES ("Software Engineer", 160000, 1), ("Lead Engineer", 180000, 1), ("Sales Associate", 100000, 2), ("Sales Leader", 120000, 2), ("Accountant", 125000, 3), ("Account Manager", 175000, 3), ("Laywer", 190000, 4), ("Legal Team Lead", 225000, 4);
 
 CREATE TABLE employees (
-    id INT AUTO_INCREMENT,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    pos_id INT NULL,
-    manager_id INT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    pos_id INT NOT NULL,
+    manager_id INT DEFAULT NULL,
     PRIMARY KEY (id)
 );
 
