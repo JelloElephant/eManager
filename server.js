@@ -32,6 +32,7 @@ const init = async () => {
                 posControl.displayAllPositions(init)
                 break
             case "View all Departments":
+                deptControl.byDept(init)
                 break
             case "Add new Department":
                 deptControl.addNewDepartment(init)
