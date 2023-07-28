@@ -2,6 +2,7 @@ const mysql = require('mysql2')
 const inquirer = require('inquirer')
 const consoleTable = require('console.table')
 
+
 require('dotenv').config()
 const config_db = require('./../config/configdb')
 
@@ -116,7 +117,7 @@ const pos = {
 
         let depts = []
         const results = await Promise.all([
-            connection.promise().query(`SELECT id, name FROM department ORDER BY name ASC;`)
+            connection.promise().query(`SELECT id, dept_name FROM department ORDER BY dept_name ASC;`)
             .then(([rows, fields]) => {
                 return rows
             })
