@@ -5,18 +5,23 @@ const consoleTable = require("console.table")
 require("dotenv").config()
 const config_db = require("./../config/configdb")
 
-var dept = {
-    byDept: (cb = () => {}) => {
+const dept = {
+    byDept: () => {
         let connection = mysql.createConnection(config_db)
-
-        connection.query(`SELECT name FROM department`, function (err, res) {
-            for (i = 0; i < res.length; i++) {
-                console.table(res)
-                cb()
-                connection.end()
+     return new Promise((resolve, reject)=>{
+        connection.query(`SELECT name FROM department`, function(err, results){
+            if(err){
+                console.error("error with query", err);
+                connection.end();
+                reject(err);
+            } else {
+                console.table(results);
+                connection.end();
+                resolve(res);
             }
-        })
-    }
-}
+        });
+     });
+    },
+};
 
-module.exports = dept
+module.exports = dept;
